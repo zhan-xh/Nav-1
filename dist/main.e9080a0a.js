@@ -104,18 +104,49 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   // Override the current require with this new one
   return newRequire;
 })({"main.js":[function(require,module,exports) {
-var hashMap = [{ logo: 'A', url: "https://www.acfun.cn/" }, { logo: './images/bilibili.jpg', url: "https://www.bilibili.com/" }, {}];
+var $siteList = $('.siteList');
+var $lastLi = $siteList.find('li.Last');
+var x = localStorage.getItem('x');
+var xObject = JSON.parse(x);
+var hashMap = xObject || [{
+    logo: 'A',
+    logoType: 'text',
+    url: 'https://www.acfun.cn'
+}, {
+    logo: './images/bilibili.jpg',
+    logoType: 'image',
+    url: 'https://www.bilibili.com'
+}];
+var render = function render() {
+    $siteList.find('li:not(.Last)').remove();
+    hashMap.forEach(function (node) {
+        var $li = $('<li>\n        <a href="' + node.url + '">\n        <div class="site">\n            <div class="logo">' + node.logo[0] + '</div>\n            <div class="link">' + node.url + '</div>\n        </div>\n    </a>\n        </li>').insertBefore($lastLi);
+    });
+};
 
+render();
 $('.addButton').on('click', function () {
     var url = window.prompt("请输入你想要添加的网址：");
-    console.log(url);
+
     if (url.indexOf('http') !== 0) {
         url = 'https://' + url;
     }
-    var $lastLi = $siteList.find('li.Last');
-    var $siteList = $('.siteList');
-    var $li = $('<li>\n<a href="' + url + '">\n<div class="site">\n    <div class="logo"> ' + url[0] + '</div>\n    <div class="link">' + url + '</div>\n</div>\n</a></li>').insertBefore($lastLi);
+    console.log(url);
+    hashMap.push({
+        logo: url[0],
+        logoType: 'text',
+        url: url
+    });
+
+    render();
 });
+
+window.onbeforeunload = function () {
+    console.log('pages will close');
+    var string = JSON.stringify(hashMap);
+
+    localStorage.setItem('x', string);
+};
 },{}],"C:\\Users\\24522\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -145,7 +176,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '60809' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62471' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
@@ -287,4 +318,4 @@ function hmrAccept(bundle, id) {
   });
 }
 },{}]},{},["C:\\Users\\24522\\AppData\\Local\\Yarn\\Data\\global\\node_modules\\parcel\\src\\builtins\\hmr-runtime.js","main.js"], null)
-//# sourceMappingURL=/main.6d591cb3.map
+//# sourceMappingURL=/main.e9080a0a.map
