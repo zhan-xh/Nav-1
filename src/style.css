@@ -33,14 +33,29 @@ body {
 }
 
 .globalHeader {
-    display: flex;
     margin: 20px;
-    justify-content: space-between;
+}
+
+@media (min-width:500px) {
+    .globalHeader {
+        margin: 60px 0 100px;
+    }
+
 }
 
 .searchForm {
     display: flex;
     justify-content: space-between;
+
+}
+
+@media (min-width:500px) {
+    .searchForm {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
 }
 
 .searchForm>input {
@@ -51,6 +66,7 @@ body {
     border: none;
     border: 1px solid #ddd;
     border-radius: 4px;
+    outline: none;
 }
 
 .searchForm>button {
@@ -63,23 +79,40 @@ body {
     font-size: 16px;
 }
 
-.globalMain {}
+.globalMain {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .siteList {
-    margin: 20px 20px;
+    margin: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
+@media (min-width:500px) {
+    .siteList {
+        margin-left: 0;
+        margin-right: -25px;
+        justify-content: flex-start;
+    }
+}
+
 .siteList>li {
 
     margin-bottom: 10px;
+}
 
+@media(min-width: 500px) {
+    .siteList>li {
+        margin-right: 25px;
+    }
 }
 
 .siteList .site {
-    padding: 20px;
+    padding: 20px 0;
     border: 1px solid #ddd;
     width: 160px;
     display: flex;
@@ -89,6 +122,8 @@ body {
     background: white;
     margin-bottom: 10px;
     border-radius: 4px;
+    position: relative;
+    cursor: pointer;
 }
 
 .siteList .site>.logo {
@@ -98,11 +133,24 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 64px;
+    text-transform: uppercase;
 }
 
 .siteList .site>.link {
     margin-top: 4px;
     font-size: 18px;
+}
+
+.siteList .site>.close {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+    display: none;
+    cursor: default;
+}
+
+.siteList .site:hover>.close {
+    display: block;
 }
 
 .siteList .addButton {
