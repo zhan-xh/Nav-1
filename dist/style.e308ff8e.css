@@ -62,7 +62,7 @@ img {
 }
 
 .searchForm>input {
-    width: 100%;
+    width: 100%; 
     margin-right: 10px;
     height: 40px;
     padding: 0 10px;
@@ -84,7 +84,7 @@ img {
     padding: 0 25px;
     border: none;
     border-radius: 16px;
-    background:rgb(79,90,172);
+    background:rgb(76,84,160);
     opacity: 1.0;
     color: white;
     font-size: 16px;
