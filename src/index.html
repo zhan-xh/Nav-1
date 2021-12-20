@@ -15,6 +15,21 @@
             fill: currentColor;
             overflow: hidden;
         }
+        #search-wrapper{
+        display: inline-block;
+        height: 32px;
+        position: relative;
+        width: 32px;
+        }
+        .search{
+            margin-top: 5px;
+            width: 1.5em;
+            height: 1.5em;
+            fill: currentColor;
+            position: absolute;
+            transform: translateX(-50px);
+        }
+ 
     </style>
     <link rel="stylesheet" href="style.css">
 
@@ -22,15 +37,23 @@
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
 
-<body background="./images/backgruond.jpg" style=" background-repeat:no-repeat ;background-size:100% 100%;
-background-attachment: fixed;">
+<body style="background-image: url(./images/bk.jpg)">
     <header class="globalHeader">
         <form class="searchForm" method="GET" action="https://www.baidu.com/s">
-            <input name="wd" type="text">
+            <input name="wd" type="text" value="请输入要查找的关键字" onfocus="if(value=='请输入要查找的关键字')value=''" onblur="if(!value)value='请输入要查找的关键字'" name="keyword" >
+            <!-- <input type="text" value="请输入要查找的关键字" onfocus="if(value=='请输入要查找的关键字')value=''" onblur="if(!value)value='请输入要查找的关键字'" name="keyword" >  -->
+
+            <div id="search-wrapper">
+                <!-- <span class="prompt-box">悬浮上来的内容</span> -->
+                <svg class="icon search">
+                    <use xlink:href="#icon-search"></use>
+                </svg>
+            </div>
+           
             <!-- <button type="button" class="btn btn-success">原始</button> -->
             <button type="submit">搜索</button>
         </form>
-
+       
     </header>
     <main class="globalMain">
         <ul class="siteList">
@@ -50,7 +73,8 @@ background-attachment: fixed;">
 
     </main>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="//at.alicdn.com/t/font_2807068_xqjajxbr8ma.js"></script>
+    <!-- <script src="//at.alicdn.com/t/font_2807068_xqjajxbr8ma.js"></script> -->
+    <script src="//at.alicdn.com/t/font_2807068_buedau9big.js"></script>
     <script src="main.js"></script>
 </body>
 
